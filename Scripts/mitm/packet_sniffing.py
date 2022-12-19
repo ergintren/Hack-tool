@@ -17,6 +17,6 @@ def packet_analyz(packet):
         if packet.haslayer(sc.Raw):
             print(packet[sc.Raw].load)
 
-user_inputs = user_input()
-listen_packet(user_inputs.iface)
+def sniff(iface):
+    listen_packet(iface)
 
