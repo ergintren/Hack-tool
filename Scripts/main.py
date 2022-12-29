@@ -22,26 +22,26 @@ user_input = input("input:")
 
 
 def change_mac():
-    interface = input("insert to interface")
-    input_mac = input("insert to mac")
+    interface = input("insert to interface:")
+    input_mac = input("insert to mac:")
     mac.change_mac(interface,input_mac)
 
 
 def netscan():
-    ipadrr = input("input to ip addres example: 10.0.2.0/24")
+    ipadrr = input("input to ip addres example: 10.0.2.0/24:")
     netscanner.Scan(ipadrr)
 
 
 
 def arp_spoof():
-    target_ip = input("input target ip adress")
-    source_ip = input("input soruce ip adress")
+    target_ip = input("input target ip adress:")
+    source_ip = input("input soruce ip adress:")
     arp_posion.arp_spf(target_ip,source_ip)
 
 
 
 def sniff():
-    iface = input("input interface")
+    iface = input("input interface:")
     packet_sniffing.sniff(iface)
 if user_input == 'use 9':
     sb.call(["echo","1",">","/proc/sys/net/ipv4/ip_forward"])
