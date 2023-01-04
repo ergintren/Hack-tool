@@ -2,6 +2,9 @@ from mitm import arp_posion,netscanner,packet_sniffing
 from Change_mac import mac
 import os
 import subprocess as sb
+from Listener import listener
+
+
 a = """
     Welcome to hacktool
 
@@ -36,13 +39,20 @@ def netscan():
 def arp_spoof():
     target_ip = input("input target ip adress:")
     source_ip = input("input soruce ip adress:")
-    arp_posion.arp_spf(target_ip,source_ip)
+    arp = arp_posion.Mac()
+    arp.arp_spf(target_ip,source_ip)
 
-
+def Listen():
+    ip = input("insert to ip address:")
+    port = int(input("insert to port:"))
+    listener.Listening(ip,port)
 
 def sniff():
     iface = input("input interface:")
-    packet_sniffing.sniff(iface)
+    sniffing = packet_sniffing.NetScan()
+    sniffing.sniff(iface)
+
+
 if user_input == 'use 9':
     sb.call(["echo","1",">","/proc/sys/net/ipv4/ip_forward"])
     change_mac()
@@ -52,3 +62,5 @@ elif user_input == 'use 2':
     arp_spoof()
 elif user_input == 'use 4':
     sniff()
+elif user_input == 'use 7':
+    Listen()

