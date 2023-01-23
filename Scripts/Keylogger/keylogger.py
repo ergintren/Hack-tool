@@ -45,8 +45,4 @@ with keylogger_listner:
     keylogger_listner.join()
     
 
-class deneme():
-    
-    def merhaba():
-        print("merhaba")
 

