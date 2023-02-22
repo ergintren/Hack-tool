@@ -58,6 +58,6 @@ class Connection():
 			self.json_send(output)
 		self.my_connection.close()
 	
-my_connect = Connection("10.0.2.4",4545)
+my_connect = Connection("0.0.0.0",4545)
 my_connect.Command()
 

