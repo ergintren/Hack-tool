@@ -2,6 +2,7 @@ import os
 from cryptography.fernet import Fernet
 
 class Decrypt():
+
     def Decrypt(self):
         file_list = []
 
@@ -10,7 +11,7 @@ class Decrypt():
                 continue
             if os.path.isfile(file):
                 file_list.append(file)
-        secret_key = input("1122")
+        secret_key = "1122"
 
         for file in file_list:
             with open(file,"rb") as the_file:
